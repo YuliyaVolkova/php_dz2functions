@@ -1,0 +1,33 @@
+.container {
+    width: 70%;
+    margin-left: 5%;
+    text-align: left;
+}
+.title {
+    text-align: center;
+    color: firebrick;
+}
+.task-wrapper {
+    margin-bottom: 20px;
+    border-bottom: 5px double yellowgreen;
+    margin-bottom: 30px;
+}
+h2 {
+    color: coral;
+}
+hr {
+    width: 20%;
+    display: inline-block;
+    text-align: left;
+}
+.table {
+    border: 1px solid grey;
+    margin-bottom: 15px;
+}
+.table tr {
+    height: 21px;
+}
+.table td {
+    width: 21px;
+    text-align: center;
+}
