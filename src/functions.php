@@ -26,7 +26,7 @@ function  task2(string $operator)
             if($type !== 'string')
                 return 'Не указан оператор для вычислений';
         } else {
-            if ($type === 'integer' | $type === 'double') {
+            if ($type === 'integer' || $type === 'double') {
                 $array[] = $param;
             }
         }
@@ -71,7 +71,7 @@ function  task2(string $operator)
 //задание 3
 function task3(int $rows, int $cols)
 {
-    if (gettype($rows)!== 'integer' | gettype($cols)!== 'integer' | $rows < 1 || $cols < 1) {
+    if (gettype($rows)!== 'integer' || gettype($cols)!== 'integer' || $rows < 1 || $cols < 1) {
         echo 'Некорректно указаны размеры таблицы умножения';
         return;
     } else {
