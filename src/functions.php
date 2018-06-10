@@ -1,9 +1,47 @@
 <?php
+
+/**
+ * @param string $timestamp
+ * @return string
+ */
+// под номерами, начинающимися с 0 - примеры использования встроенных функций
+function task0(string $timestamp = '24.02.2016 00:00:00') :string
+{
+    $currentDate = date('d.m.Y H:i');
+    echo '<p>', 'Сегодня ', $currentDate, '</p>';
+
+    list($date, $time) = explode(' ', $timestamp);
+    list($day, $month, $year) = explode('.', $date);
+    list($hours, $minutes, $seconds) = explode(':', $time);
+    echo '<p>', 'Unix timestamp время, соответствующее ', $timestamp, ': ',
+        mktime($hours, $minutes, $seconds, $month, $day, $year), '</p>';
+    echo '<p>', 'День недели, соответствующий ', $timestamp, ': ',
+    date('l', mktime($hours, $minutes, $seconds, $month, $day, $year)), '</p>';
+
+    return $currentDate;
+}
+
+/**
+ * @param string $str
+ * @param string $search
+ * @return string
+ */
+function task02(string $str, string $search) :string
+{
+    if (func_num_args() < 3) {
+        return str_replace($search, '', $str);
+    } elseif (func_get_arg(2)) {
+        return str_replace($search, func_get_arg(2), $str);
+    }
+    return $str;
+}
+
 /**
  * @param array $arr
  * @param bool $concat
  * @return string
  */
+//задание 1
 function task1(array $arr, bool $concat = false)
 {
     for ($i = 0; $i < count($arr); $i++) {
@@ -17,6 +55,7 @@ function task1(array $arr, bool $concat = false)
 /**
  * @param string $operator
  */
+//задание 2
 function  task2(string $operator)
 {
     for ($i = 0; $i < func_num_args(); $i++) {
@@ -90,39 +129,25 @@ function task3(int $rows, int $cols)
 
 /**
  * @param string $timestamp
- * @return string
  */
 //задание 4
-function task4(string $timestamp = '24.02.2016 00:00:00') :string
+function task4(string $timestamp = '24.02.2016 00:00:00')
 {
-    $currentDate = date('d.m.y h:i');
-    echo '<p>', 'Сегодня ', $currentDate, '</p>';
-
-    list($date, $time) = explode(' ', $timestamp);
-    list($day, $month, $year) = explode('.', $date);
-    list($hours, $minutes, $seconds) = explode(':', $time);
-
+    echo '<p>', 'Сегодня ', date('d.m.Y H:i'), '</p>';
     echo '<p>', 'Unix timestamp время, соответствующее ', $timestamp, ': ',
-        mktime($hours, $minutes, $seconds, $month, $day, $year), '</p>';
-    echo '<p>', 'День недели, соответствующий ', $timestamp, ': ',
-    date('l', mktime($hours, $minutes, $seconds, $month, $day, $year)), '</p>';
-    return $currentDate;
+    strtotime($timestamp), '</p>';
 }
 
-/**
- * @param string $str
- * @param string $search
- * @return string
- */
 //задание 5
-function task5(string $str, string $search) :string
+function task5()
 {
-   if (func_num_args() < 3) {
-        return str_replace($search, '', $str);
-    } elseif (func_get_arg(2)) {
-        return str_replace($search, func_get_arg(2), $str);
-    }
-    return func_num_args();
+    $str = 'Карл у Клары украл Кораллы';
+    echo '<p>', str_replace('К', '', $str), '</p>';
+
+// Вариант замены 'Две' на 'Три'
+
+    $str = 'Две бутылки лимонада';
+    echo '<p>', str_replace('Две', 'Три', $str), '</p>';
 }
 
 /**
@@ -135,6 +160,8 @@ function task6(string $filename = 'test.txt')
     $file = fopen('test.txt', 'w');
     fwrite($file, 'Hello again!');
     fclose($file);
+
+    echo '<p>Файл "test.txt" успешно записан</p>';
 
     // пункт 2 задачи
     $file = fopen($filename, 'r');
